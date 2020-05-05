@@ -10,6 +10,8 @@ public class Week1 {
 		String a = "asda";
 		System.out.println(a.replaceFirst("a", ""));
 		System.out.println(lengthOfLongestSubstring("aab"));
+		
+		System.out.println(firstUniqChar("loveleetcode"));
 	}
 	
 	
@@ -82,8 +84,22 @@ public class Week1 {
     }
 	
 	public static int firstUniqChar(String s) {
-        
-		return 0;
+        HashMap<Character, Integer> hm = new HashMap();
+        for(int i=0; i<s.length(); i++) {
+        	char ch = s.charAt(i);
+        	if(hm.containsKey(ch)){
+        		int nVal = hm.get(ch)+1;
+        		hm.put(ch, nVal);
+        	}else
+        		hm.put(ch, 1);
+        }
+        for(int i=0; i<s.length(); i++) {
+        	char ch = s.charAt(i);
+        	if(hm.get(ch)==1){
+        		return i;
+        	}
+        }
+		return -1;
     }
 	
 	
