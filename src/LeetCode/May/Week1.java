@@ -102,7 +102,21 @@ public class Week1 {
 		return -1;
     }
 	
-	
+	public int majorityElement(int[] nums) {
+//        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+//        int size = nums.length;
+//        for(int i=0;i<size;i++){
+//            if(!map.containsKey(nums[i]))
+//            	map.put(nums[i], 1);
+//            else {
+//            	int a = map.get(nums[i]);
+//            	map.put(nums[i], a++);
+//            }
+//        }
+//        double mVal = size/2;
+//        for()
+        return 0;
+    }
 	
 
 }
