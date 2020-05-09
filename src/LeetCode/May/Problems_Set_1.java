@@ -11,6 +11,9 @@ public class Problems_Set_1 {
 		System.out.println(myAtoi("  -00000000000123456.78"));	
 		System.out.println(isPalindrome(123221));
 		System.out.println(isMatch("missaaaps","m.s..*ps"));
+		System.out.println(uniquePaths(3,3));
+		System.out.println(climbStairs(2));
+		
 	}
 	
 	/* 6. ZigZag Conversion */
@@ -93,9 +96,58 @@ public class Problems_Set_1 {
     }
 	/* 10. Regular Expression Matching*/
 	public static boolean isMatch(String s, String p) {
-//        
+//        char temp='#';
+//        int j=0;
+//		for(int i=0; i<s.length(); i++) {
+//			char sCh = s.charAt(i);
+//			char pCh = p.charAt(j);
+//			if(pCh=='.' || pCh==sCh){
+//				temp=sCh;
+//				j++;
+//			}
+//			if(pCh=='*') {
+//				if(sCh!=temp) return false;
+//			}
+//		}
         
 		return true;
+    }
+	
+	/* 62. Unique Paths*/
+	public static int uniquePaths(int m, int n) {
+        int[][] p=new int[m][n];
+        
+        if(m==1 || n==1) return 1;
+        
+        for(int i = 0; i<m;++i){
+            p[i][0] = 1;
+        }
+        for(int j = 0; j<n;++j){
+            p[0][j] = 1;
+        }
+        
+        for(int i=1; i<m;i++)
+        {
+        	for(int j=1; j<n; j++) {
+        		p[i][j]=p[i-1][j]+p[i][j-1];
+        	}
+        }        
+        
+        return p[m-1][n-1];
+    }
+	
+	/*70. Climbing Stairs*/
+	public static int climbStairs(int n) {
+        int[] nums=new int[n+1];
+        nums[0]=1;
+        nums[1]=1;
+        
+        if(n==0 || n==1) return nums[n];
+        
+        for(int i=2; i<=n; i++) {
+        	nums[i]=nums[i-1]+nums[i-2];
+        }
+        return nums[n];
     }
 
 }
