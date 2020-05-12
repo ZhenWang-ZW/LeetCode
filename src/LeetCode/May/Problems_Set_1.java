@@ -14,6 +14,9 @@ public class Problems_Set_1 {
 		System.out.println(uniquePaths(3,3));
 		System.out.println(climbStairs(2));
 		
+		int[][] map= new int[][] {{0,0},{1,0}};
+		System.out.println(uniquePathsWithObstacles(map));
+		
 	}
 	
 	/* 6. ZigZag Conversion */
@@ -130,6 +133,46 @@ public class Problems_Set_1 {
         {
         	for(int j=1; j<n; j++) {
         		p[i][j]=p[i-1][j]+p[i][j-1];
+        	}
+        }        
+        
+        return p[m-1][n-1];
+    }
+	
+	/* 63. Unique Paths II*/
+	public static int uniquePathsWithObstacles(int[][] obstacleGrid) {
+		int m=obstacleGrid.length,
+			n=obstacleGrid[0].length;
+		
+		int[][] p=new int[m][n];
+        
+        if(m==1 && n==1) {
+        	if(obstacleGrid[0][0]==1)
+        		return 0;
+        	else
+        		return 1;
+        }
+        
+        int val=1;
+        for(int i = 0; i<m;++i){
+        	if(obstacleGrid[i][0]==1)
+        		val=0;
+            p[i][0] = val;
+        }
+        val=1;
+        for(int j = 0; j<n;++j){
+        	if(obstacleGrid[0][j]==1)
+        		val=0;
+            p[0][j] = val;
+        }
+        
+        for(int i=1; i<m;i++)
+        {
+        	for(int j=1; j<n; j++) {
+        		if(obstacleGrid[i][j]==1)
+        			p[i][j]=0;
+        		else
+        			p[i][j]=p[i-1][j]+p[i][j-1];
         	}
         }        
         
